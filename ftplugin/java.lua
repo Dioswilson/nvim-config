@@ -14,9 +14,11 @@ local projectName = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspaceDir = vim.fn.stdpath("data") .. "site/java/workspace-root/" .. projectName
 os.execute("mkdir -p " .. workspaceDir)
 
+local jdtlsExe=jdtlsDir .. "/bin/jdtls"
+
 local config = {
     cmd = {
-        "/home/dioswilson1/.local/share/nvim/mason/packages/jdtls/bin/jdtls",
+        jdtlsExe,
         "java",
         -- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
