@@ -1,9 +1,12 @@
 return {
+    -- dir="~/CodeStuff/nvimPlugins/expand.nvim",
     "Sam-programs/expand.nvim",
+    branch = "testing",
     dependencies = {
         "Sam-Programs/indent.nvim",
     },
     config = function()
+        local notCurlyEnding = "\\(.*{\\)\\@!"
         require("expand").setup({
             filetypes = { --TODO: Continue customizing regex and pairs, it is super powerful
                 lua = {
@@ -40,27 +43,42 @@ return {
                     { "", { "", "" }, { do_nothing = true } }, --This is fallback
                 },
                 java = {
-                    { "\\( if\\|for\\|while \\)\\s*(.*)\\s*$", { "{", "}" } },
+                    {
+                        "\\(if\\|for\\|while\\)\\s*(.*)\\s*" .. notCurlyEnding,
+                        { "{", "}" },
+                        { wrap_pair_between_match = true },
+                    },
                     { ".*(.*)\\s*$", { ";", "" } }, --For function call
                     { ".*=.*$", { ";", "" }, { endpair_new_line = false } },
                     { "", { "", "" }, { do_nothing = true } }, --This is fallback
                 },
                 c = {
-                    { "\\( if\\|for\\|while \\)\\s*(.*)\\s*$", { "{", "}" } },
+                    {
+                        "\\(if\\|for\\|while\\)\\s*(.*)\\s*" .. notCurlyEnding,
+                        { "{", "}" },
+                        { wrap_pair_between_match = true },
+                    },
                     { ".*(.*)\\s*$", { ";", "" } }, --For function call
                     { "struct .*$", { "{", "};" } },
                     { ".*=.*$", { ";", "" }, { endpair_new_line = false } },
                     { "", { "", "" }, { do_nothing = true } }, --This is fallback
                 },
                 cpp = {
-                    { "\\(if\\|for\\|while\\)\\s*(.*)\\s*$", { "{", "}" } },
-                    { ".*(.*)\\s*$", { ";", "" } }, --For function call
-                    { "struct .*$", { "{", "};" } },
+                    {
+                        "\\(if\\|for\\|while\\)\\s*(.*)\\s*" .. notCurlyEnding,
+                        { "{", "}" },
+                        { wrap_pair_between_match = true },
+                    },
+                    { ".*(.*)\\s*$", { ";", "" } }, --For function call (Maybe not have  this )
+                    { "class " .. notCurlyEnding, { "{", "};" } },
+                    { "typedef struct \\w\\{0,1}" .. notCurlyEnding, { "{", "};" } },
+                    { "struct \\w" .. notCurlyEnding, { "{", "};" } },
                     { ".*=.*$", { ";", "" }, { endpair_new_line = false } },
                     { "", { "", "" }, { endpair_new_line = false } }, --This is fallback
                 },
             },
             hotkey = "<C-Enter>",
+            -- wrap_hotkey="<C-Enter>",
         })
     end,
 }
