@@ -9,7 +9,7 @@ return function(_, bufnr)
 
     local builtin = require("telescope.builtin")
 
-    nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+    nmap("<leader>rn", ":Lspsaga rename ++project<CR>", "[R]e[n]ame") -- Note: might not work 100% correctly
     nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
     -- nmap("<leader>gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
@@ -36,6 +36,6 @@ return function(_, bufnr)
     nmap("<leader>do", ":Lspsaga show_cursor_diagnostics<CR>", "[D]iagnostic [O]pen")
     nmap("<leader>pd", ":Lspsaga peek_definition<CR>", "[P]eek [D]efinition")
     nmap("<leader>hd", ":Lspsaga hover_doc<CR>", "[H]over [D]oc")
-    nmap("<leader>ot", ":Lspsaga outline", "[O]utline [T]oggle")
-    nmap("<leader>gd", "::Lspsaga goto_definition<CR>", "[G]oto [D]efinition") --Note: maybe change to <C-b>
+    nmap("<leader>ot", ":Lspsaga outline<CR>", "[O]utline [T]oggle")
+    nmap("<leader>gd", ":Lspsaga goto_definition<CR>", "[G]oto [D]efinition") --Note: maybe change to <C-b>
 end
