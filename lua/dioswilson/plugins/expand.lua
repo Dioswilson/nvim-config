@@ -48,9 +48,9 @@ return {
                         { "{", "}" },
                         { wrap_pair_between_match = true },
                     },
-                    { ".*(.*)\\s*$", { ";", "" } }, --For function call
+                    { ".*(.*)\\s*$", { ";", "" } }, --For function call (Maybe not have  this )
                     { ".*=.*$", { ";", "" }, { endpair_new_line = false } },
-                    { "", { "", "" }, { do_nothing = true } }, --This is fallback
+                    { "", { "", "" }, { endpair_new_line = false } }, --This is fallback
                 },
                 c = {
                     {
@@ -58,12 +58,13 @@ return {
                         { "{", "}" },
                         { wrap_pair_between_match = true },
                     },
-                    { ".*(.*)\\s*$", { ";", "" } }, --For function call
-                    { "struct .*$", { "{", "};" } },
+                    { ".*(.*)\\s*$", { ";", "" } }, --For function call (Maybe not have  this )
+                    { "typedef struct \\w\\{0,1}" .. notCurlyEnding, { "{", "};" } },
+                    { "struct \\w" .. notCurlyEnding, { "{", "};" } },
                     { ".*=.*$", { ";", "" }, { endpair_new_line = false } },
-                    { "", { "", "" }, { do_nothing = true } }, --This is fallback
+                    { "", { "", "" }, { endpair_new_line = false } }, --This is fallback
                 },
-                cpp = {
+                cpp = { --Todo: include function creation with {}
                     {
                         "\\(if\\|for\\|while\\)\\s*(.*)\\s*" .. notCurlyEnding,
                         { "{", "}" },
@@ -78,7 +79,7 @@ return {
                 },
             },
             hotkey = "<C-Enter>",
-            -- wrap_hotkey="<C-Enter>",
+            wrap_hotkey = "<C-Enter>",
         })
     end,
 }
