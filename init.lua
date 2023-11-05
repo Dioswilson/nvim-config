@@ -48,7 +48,7 @@ require("lazy").setup({
     "tpope/vim-fugitive",
     "tpope/vim-rhubarb",
 
-  "tpope/vim-sleuth",
+    "tpope/vim-sleuth",
     -- Detect tabstop and shiftwidth automatically
 
     -- NOTE: This is where your plugins related to LSP can be installed.
