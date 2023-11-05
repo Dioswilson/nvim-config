@@ -15,4 +15,7 @@ return {
             TEST = { alt = { "Test" } },
         },
     },
+    config = function()
+        require("dioswilson.keymap.todoComments")
+    end,
 }

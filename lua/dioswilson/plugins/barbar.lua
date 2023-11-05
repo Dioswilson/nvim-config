@@ -6,6 +6,7 @@ return {
     },
     init = function()
         vim.g.barbar_auto_setup = false
+        require("dioswilson.keymap.barbar")
     end,
     opts = {
         -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:

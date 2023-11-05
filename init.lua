@@ -10,11 +10,11 @@ Kickstart.nvim is a template for your own configuration.
   The goal is that you can read every line of code, top-to-bottom, understand
   what your configuration is doing, and modify it to suit your needs.
 
-  Once you've done that, you should start exploring, configuring and tinkering to
   explore Neovim!
 
   If you don't know anything about Lua, I recommend taking some time to read through
   a guide. One possible example:
+  Once you've done that, you should start exploring, configuring and tinkering to
   - https://learnxinyminutes.com/docs/lua/
 
   And then you can explore or search through `:help lua-guide`
@@ -48,8 +48,8 @@ require("lazy").setup({
     "tpope/vim-fugitive",
     "tpope/vim-rhubarb",
 
+  "tpope/vim-sleuth",
     -- Detect tabstop and shiftwidth automatically
-    "tpope/vim-sleuth",
 
     -- NOTE: This is where your plugins related to LSP can be installed.
     --  The configuration is done below. Search for lspconfig to find it below.
@@ -197,12 +197,7 @@ vim.o.smartindent = true
 -- [[ Basic Keymaps ]]
 
 require("dioswilson/keymap/autoformat")
-require("dioswilson/keymap/barbar")
-require("dioswilson/keymap/neoTree")
-require("dioswilson/keymap/todoComments")
 require("dioswilson/keymap/moveCode")
-require("dioswilson/keymap/yanky")
-require("dioswilson/keymap/telescope")
 
 -- require("dioswilson/keymap")
 -- Keymaps for better default experience
@@ -237,7 +232,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --     group = autoFormatGroup,
 --     command = "FormatWriteLock",
 -- })
-
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })

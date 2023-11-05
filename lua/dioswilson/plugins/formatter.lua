@@ -66,7 +66,7 @@ return {
                 yaml = {
                     require("formatter.filetypes.yaml").prettier,
                 },
-                toml={
+                toml = {
                     require("formatter.filetypes.toml").taplo,
                 },
                 ["*"] = {

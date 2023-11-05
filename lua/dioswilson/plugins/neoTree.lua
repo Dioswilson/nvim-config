@@ -17,5 +17,6 @@ return {
             --     },
             --   }
         })
+        require("dioswilson.keymap.neoTree")
     end,
 }
