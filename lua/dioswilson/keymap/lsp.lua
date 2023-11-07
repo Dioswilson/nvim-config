@@ -9,7 +9,11 @@ return function(_, bufnr)
 
     local builtin = require("telescope.builtin")
 
-    nmap("<leader>rn", ":Lspsaga rename ++project<CR>", "[R]e[n]ame") -- Note: might not work 100% correctly
+    vim.keymap.set("n", "<leader>rn", function() -- Note: maybe change to <C-b>
+        return ":IncRename " .. vim.fn.expand("<cword>")
+    end, { expr = true, desc = "[R]e[n]ame" })
+    
+    -- nmap("<leader>rn", ":Lspsaga rename ++project<CR>", "[R]e[n]ame") -- Note might not work 100% correctly
     nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
     -- nmap("<leader>gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
