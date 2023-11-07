@@ -42,8 +42,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+vim.opt.sessionoptions = "buffers,curdir,folds,globals,tabpages,winpos,winsize" -- Session options to store in the session
 
+require("lazy").setup({
     -- Git related plugins
     "tpope/vim-fugitive",
     "tpope/vim-rhubarb",
@@ -147,7 +148,12 @@ require("lazy").setup({
     },
 
     { import = "dioswilson.plugins" },
-}, {})
+}, {
+    --root=root.."/plugins",
+    change_detection = {
+        notify = false, -- (not)get a notification when changes are found
+    },
+})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
