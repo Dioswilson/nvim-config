@@ -12,6 +12,7 @@ BreakBeforeBraces: Custom
 BraceWrapping: 
   BeforeElse: true
 AccessModifierOffset : 2
+IndentCaseLabels: true
 ---
 Language: Java
 BreakBeforeBraces: Custom
