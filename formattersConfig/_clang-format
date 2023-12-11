@@ -13,6 +13,7 @@ BraceWrapping:
   BeforeElse: true
 AccessModifierOffset : 2
 IndentCaseLabels: true
+ColumnLimit: 100
 ---
 Language: Java
 BreakBeforeBraces: Custom
