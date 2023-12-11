@@ -76,8 +76,7 @@ require("lazy").setup({
         "hrsh7th/nvim-cmp",
         dependencies = {
             -- Snippet Engine & its associated nvim-cmp source
-            "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip",
+             "saadparwaiz1/cmp_luasnip",
 
             -- Adds LSP completion capabilities
             "hrsh7th/cmp-nvim-lsp",
@@ -214,8 +213,8 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.keymap.set("i", "<C-H>", "<C-W>", { noremap = true })
 
 -- Remap for dealing with word wrap
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ "n", "v" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Don't replace clipboard when copying
 vim.keymap.set("x", "p", function()
