@@ -2,9 +2,10 @@
 # We'll use defaults from the LLVM style, but with 4 columns indentation.
 BasedOnStyle: LLVM
 IndentWidth: 4
+
 ---
-Language: Cpp
-# Force pointers to the type for C++.
+Language: C
+# Force pointers to the type for C
 DerivePointerAlignment: false
 PointerAlignment: Left
 AllowShortIfStatementsOnASingleLine: Never
@@ -15,15 +16,34 @@ AccessModifierOffset : 2
 IndentCaseLabels: true
 ColumnLimit: 100
 ---
+
+Language: C++
+# Force pointers to the type for C++
+DerivePointerAlignment: false
+PointerAlignment: Left
+AllowShortIfStatementsOnASingleLine: Never
+BreakBeforeBraces: Custom
+BraceWrapping: 
+  BeforeElse: true
+AccessModifierOffset : 2
+IndentCaseLabels: true
+ColumnLimit: 100
 Language: Java
 BreakBeforeBraces: Custom
 BraceWrapping: 
   BeforeElse: true
 ---
+
+Language: CSharp
+# Use 100 columns for C#.
+ColumnLimit: 100
+---
+
 Language: JavaScript
 # Use 100 columns for JS.
 ColumnLimit: 100
 ---
+
 Language: Proto
 # Don't format .proto files.
 DisableFormat: true
@@ -31,3 +51,5 @@ DisableFormat: true
 Language: CSharp
 # Use 100 columns for C#.
 ColumnLimit: 100
+
+---
