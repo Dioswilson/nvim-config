@@ -49,8 +49,8 @@ require("lazy").setup({
     "tpope/vim-fugitive",
     "tpope/vim-rhubarb",
 
-    "tpope/vim-sleuth",
     -- Detect tabstop and shiftwidth automatically
+    --"tpope/vim-sleuth", --NOTE: this is not workign well
 
     -- NOTE: This is where your plugins related to LSP can be installed.
     --  The configuration is done below. Search for lspconfig to find it below.
@@ -76,7 +76,7 @@ require("lazy").setup({
         "hrsh7th/nvim-cmp",
         dependencies = {
             -- Snippet Engine & its associated nvim-cmp source
-             "saadparwaiz1/cmp_luasnip",
+            "saadparwaiz1/cmp_luasnip",
 
             -- Adds LSP completion capabilities
             "hrsh7th/cmp-nvim-lsp",
@@ -168,11 +168,6 @@ vim.wo.relativenumber = true
 -- Enable mouse mode
 vim.o.mouse = "a"
 
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = "unnamedplus"
-
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -210,7 +205,7 @@ require("dioswilson/keymap/moveCode")
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Delete prev word in insert mode
-vim.keymap.set("i", "<C-H>", "<C-W>", { noremap = true })
+vim.keymap.set("i", "<C-H>", "<C-W>", { noremap = true }) --Fix: This stopped working
 
 -- Remap for dealing with word wrap
 vim.keymap.set({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -285,6 +280,7 @@ mason_lspconfig.setup_handlers({
             vim.diagnostic.config({
                 virtual_text = false,
             }),
+            vim.lsp.inlay_hint.enable(),
         })
     end,
 })
