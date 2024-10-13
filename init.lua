@@ -332,6 +332,35 @@ cmp.setup({
         { name = "luasnip" },
     },
 })
+
+local customPaste = function(reg)
+    return function(lines)
+        local content = vim.fn.getreg('"')
+        return vim.split(content, "\n")
+    end
+end
+
+--Note:Might have issues with tmux
+if os.getenv("SSH_TTY") == nil then
+    -- Sync clipboard between OS and Neovim.
+    vim.o.clipboard = "unnamedplus"
+else
+    -- Sync clipboard between OS and Neovim.
+    vim.o.clipboard = "unnamedplus"
+    --Use OSC 52 to copy and paste from 
+    vim.g.clipboard = {
+        name = "OSC 52",
+        copy = {
+            ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+            ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+        },
+        paste = {
+            ["+"] = customPaste("+"),
+            ["*"] = customPaste("*"),
+        },
+    }
+end
+
 -- cmp.event:on("confirm_done", function(event)
 --     local entry = event.entry
 --     local item = entry:get_completion_item()
