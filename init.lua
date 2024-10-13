@@ -333,7 +333,7 @@ cmp.setup({
     },
 })
 
-local customPaste = function(reg)
+local regularPaste = function(reg)
     return function(lines)
         local content = vim.fn.getreg('"')
         return vim.split(content, "\n")
@@ -355,8 +355,8 @@ else
             ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
         },
         paste = {
-            ["+"] = customPaste("+"),
-            ["*"] = customPaste("*"),
+            ["+"] = regularPaste("+"),
+            ["*"] = regularPaste("*"),
         },
     }
 end
